@@ -44,7 +44,7 @@ def api():
         if len(data) != 3:
             error = 'Did not get complete response from Weather API'
   
-    return f"It is currently {data[0]['main']['temp']:2.0}°F in {data[0]['name']}, {data[1]['main']['temp']:2.0}°F in {data[1]['name']}, and {data[2]['main']['temp']:2.0}°F in {data[2]['name']}"
+    return f"It is currently {data[0]['main']['temp']:.0f}°F in {data[0]['name']}, {data[1]['main']['temp']:.0f}°F in {data[1]['name']}, and {data[2]['main']['temp']:.0f}°F in {data[2]['name']}"
 
 
 if __name__ == "__main__":
