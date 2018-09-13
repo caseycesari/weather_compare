@@ -28,5 +28,24 @@ def index():
                            time=get_local_time)
 
 
+@app.route('api', methods=['GET'])
+def api():
+    data = []
+    error = None
+    if request.method == 'GET':
+        city1 = request.args.get('city1')
+        city2 = request.args.get('city2')
+        city3 = request.args.get('city3')
+        for c in (city1, city2, city3):
+            resp = query_api(c)
+            pp(resp)
+            if resp:
+                data.append(resp)
+        if len(data) != 3:
+            error = 'Did not get complete response from Weather API'
+  
+    return f"It is currently {data[0]['main']['temp']} in {data[0]['name']}."
+
+
 if __name__ == "__main__":
     app.run()
