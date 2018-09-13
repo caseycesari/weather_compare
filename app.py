@@ -1,6 +1,6 @@
 from pprint import pprint as pp
 
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, jsonify
 
 from weather import get_local_time, query_api
 
@@ -44,7 +44,9 @@ def api():
         if len(data) != 3:
             error = 'Did not get complete response from Weather API'
   
-    return f"It is currently {data[0]['main']['temp']:.0f}°F in {data[0]['name']}, {data[1]['main']['temp']:.0f}°F in {data[1]['name']}, and {data[2]['main']['temp']:.0f}°F in {data[2]['name']}."
+    msg = f"It is currently {data[0]['main']['temp']:.0f}°F in {data[0]['name']}, {data[1]['main']['temp']:.0f}°F in {data[1]['name']}, and {data[2]['main']['temp']:.0f}°F in {data[2]['name']}."
+    
+    return jsonify({ "response_type": "in_channel", "text": msg })
 
 
 if __name__ == "__main__":
