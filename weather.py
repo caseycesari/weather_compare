@@ -4,9 +4,9 @@ import os
 import pytz
 import requests
 
-API_KEY = os.environ.get('WEATHER_API')
+API_KEY = "c43f4ffafb1a4ded7e28c1eec1449e02"
 API_URL = ('http://api.openweathermap.org/data/2.5/weather?'
-           'q={}&mode=json&units=metric&appid={}')
+           'zip={},us&mode=json&units=imperial&appid={}')
 DEFAULT_TIME = 'Europe/Madrid'
 TIME_FMT = '%H:%M:%S %Z%z'
 
