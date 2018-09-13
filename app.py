@@ -28,7 +28,7 @@ def index():
                            time=get_local_time)
 
 
-@app.route('api', methods=['GET'])
+@app.route('/api', methods=['GET'])
 def api():
     data = []
     error = None
