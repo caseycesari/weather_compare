@@ -45,7 +45,7 @@ def api():
         if len(data) != 4:
             error = 'Did not get complete response from Weather API'
   
-    msg = f"It is currently {data[0]['main']['temp']:.0f}°F in {data[0]['name']}, {data[1]['main']['temp']:.0f}°F in {data[1]['name']}, {data[2]['main']['temp']:.0f}°F in {data[2]['name']}, {data[3]['main']['temp']:.0f}°F in {data[3]['name']},."
+    msg = f"It is currently {data[0]['main']['temp']:.0f}°F in {data[0]['name']}, {data[1]['main']['temp']:.0f}°F in {data[1]['name']}, {data[2]['main']['temp']:.0f}°F in {data[2]['name']}, and {data[3]['main']['temp']:.0f}°F in {data[3]['name']}."
     
     return jsonify({ "response_type": "in_channel", "text": msg })
 
