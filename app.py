@@ -36,15 +36,16 @@ def api():
         city1 = request.args.get('city1')
         city2 = request.args.get('city2')
         city3 = request.args.get('city3')
-        for c in (city1, city2, city3):
+        city4 = request.args.get('city4')
+        for c in (city1, city2, city3, city4):
             resp = query_api(c)
             pp(resp)
             if resp:
                 data.append(resp)
-        if len(data) != 3:
+        if len(data) != 4:
             error = 'Did not get complete response from Weather API'
   
-    msg = f"It is currently {data[0]['main']['temp']:.0f}°F in {data[0]['name']}, {data[1]['main']['temp']:.0f}°F in {data[1]['name']}, and {data[2]['main']['temp']:.0f}°F in {data[2]['name']}."
+    msg = f"It is currently {data[0]['main']['temp']:.0f}°F in {data[0]['name']}, {data[1]['main']['temp']:.0f}°F in {data[1]['name']}, {data[2]['main']['temp']:.0f}°F in {data[2]['name']}, {data[3]['main']['temp']:.0f}°F in {data[3]['name']},."
     
     return jsonify({ "response_type": "in_channel", "text": msg })
 
